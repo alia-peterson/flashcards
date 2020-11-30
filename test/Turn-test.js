@@ -22,10 +22,33 @@ describe('Turn', function() {
     expect(turn.guess).to.deep.equal('b')
   })
 
-  it.skip('should store a card', function() {
+  it('should store a card', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
     const turn = new Turn('b', card)
     expect(turn.card).to.deep.equal(card)
+  })
+
+  it('should return the player guess', function() {
+    const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
+    const turn = new Turn('b', card)
+    let guess = turn.returnGuess()
+
+    expect(guess).to.equal('b')
+  })
+
+  it.skip('should return the card object', function() {
+    const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
+    const turn = new Turn('b', card)
+  })
+
+  it.skip('should evaluate player guess', function() {
+    const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
+    const turn = new Turn('b', card)
+  })
+
+  it.skip('should provide feedback to player', function() {
+    const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
+    const turn = new Turn('b', card)
   })
 
 })
