@@ -1,7 +1,7 @@
-const chai = require('chai');
-const expect = chai.expect;
+const chai = require('chai')
+const expect = chai.expect
 
-const Round = require('../src/Round');
+const Round = require('../src/Round')
 
 describe('Round', function() {
 
@@ -11,8 +11,8 @@ describe('Round', function() {
   })
 
   it('should be an instance of Round', function() {
-    const round = new Round();
-    expect(round).to.be.an.instanceof(Round);
-  });
+    const round = new Round()
+    expect(round).to.be.an.instanceof(Round)
+  })
 
 })
