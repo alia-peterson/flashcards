@@ -9,15 +9,21 @@ class Turn {
   }
 
   returnCard() {
-
+    return this.card
   }
 
-  evaluateGuess() {
-
+  evaluateGuess(turn, card) {
+    if (turn.guess === card.correctAnswer) {
+      return true
+    }
+    return false
   }
 
   giveFeedback() {
-
+    if (this.evaluateGuess) {
+      return `That's correct!`
+    }
+    return `That's incorrect, try again!`
   }
 }
 
