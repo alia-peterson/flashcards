@@ -31,24 +31,37 @@ describe('Turn', function() {
   it('should return the player guess', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
     const turn = new Turn('b', card)
-    let guess = turn.returnGuess()
+
+    const guess = turn.returnGuess()
 
     expect(guess).to.equal('b')
   })
 
-  it.skip('should return the card object', function() {
+  it('should return the card object', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
     const turn = new Turn('b', card)
+
+    const turnCard = turn.returnCard()
+
+    expect(turnCard).to.equal(card)
   })
 
-  it.skip('should evaluate player guess', function() {
+  it('should evaluate player guess', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
     const turn = new Turn('b', card)
+
+    const guess = turn.evaluateGuess(turn, card)
+
+    expect(guess).to.equal(true)
   })
 
-  it.skip('should provide feedback to player', function() {
+  it('should provide feedback to player', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
     const turn = new Turn('b', card)
+
+    const feedback = turn.giveFeedback()
+
+    expect(feedback).to.equal(`That's correct!`)
   })
 
 })
