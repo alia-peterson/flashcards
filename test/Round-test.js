@@ -1,13 +1,12 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const Turn = require('../src/Turn')
 const Card = require('../src/Card')
 const Deck = require('../src/Deck')
 const Round = require('../src/Round')
 
 describe('Round', function() {
-  let card1, card2, card3, deck, currentRound
+  let card1, card2, card3, deck, round
 
   beforeEach(function() {
     card1 = new Card(1, 'Question1', ['close', 'correct', 'wrong'], 'correct')
@@ -46,28 +45,26 @@ describe('Round', function() {
   })
 
   it('should evaluate the guess', function() {
-    const guess1 = round.takeTurn('correct')
-    expect(guess1).to.equal(`That's correct!`)
+    expect(round.takeTurn('correct')).to.equal(`That's correct!`)
 
-    const guess2 = round.takeTurn('something')
-    expect(guess2).to.equal(`That's incorrect, try again!`)
+    expect(round.takeTurn('something')).to.equal(`That's incorrect, try again!`)
   })
 
   it('should store the incorrect guesses', function() {
-    const guess1 = round.takeTurn('correct')
+    round.takeTurn('correct')
     expect(round.incorrectGuesses.length).to.equal(0)
 
-    const guess2 = round.takeTurn('something')
+    round.takeTurn('something')
     expect(round.incorrectGuesses[0]).to.equal(4)
   })
 
   it('should calculate the percent of correct answers', function() {
     expect(round.calculatePercentCorrect()).to.equal(0)
 
-    const guess1 = round.takeTurn('correct')
+    round.takeTurn('correct')
     expect(round.calculatePercentCorrect()).to.equal(100)
 
-    const guess2 = round.takeTurn('something')
+    round.takeTurn('something')
     expect(round.calculatePercentCorrect()).to.equal(50)
   })
 

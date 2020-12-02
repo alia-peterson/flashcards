@@ -9,6 +9,9 @@ class Round {
   }
 
   returnCurrentCard() {
+    if (this.turns > this.deck.cards.length) {
+      return true
+    }
     return this.currentCard
   }
 
@@ -36,6 +39,7 @@ class Round {
   endRound() {
     const percent = this.calculatePercentCorrect()
     console.log(`** Round Over! ** You answered ${percent}% of the questions correctly!`)
+    process.exit()
   }
 }
 
