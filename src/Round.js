@@ -25,11 +25,18 @@ class Round {
   }
 
   calculatePercentCorrect() {
-
+    if (this.turns === 0) {
+      return 0
+    } else {
+      const totalCorrect = this.turns - this.incorrectGuesses.length
+      return totalCorrect / this.turns * 100
+    }
   }
 
   endRound() {
-    // prints round over and percent correct message
+    const percent = calculatePercentCorrect()
+    console.log(`** Round Over! ** You answered ${percent}%
+      of the questions correctly!`)
   }
 }
 
