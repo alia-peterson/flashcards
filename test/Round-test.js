@@ -71,4 +71,8 @@ describe('Round', function() {
     expect(round.calculatePercentCorrect()).to.equal(50)
   })
 
+  it('should log end round phrase', function() {
+    round.endRound()
+  })
+
 })
