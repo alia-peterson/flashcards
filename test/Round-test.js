@@ -33,25 +33,32 @@ describe('Round', function() {
     expect(round.returnCurrentCard()).to.equal(card1)
   })
 
-  it('should create a new turn instance', function() {
-    round.takeTurn('correct')
-    expect(turn).to.be.an.instanceof(Turn)
+  it('should increase the turn counter', function() {
+    expect(round.turns).to.equal(0)
+    round.takeTurn()
+    expect(round.turns).to.equal(1)
   })
 
-  it.skip('should increase the turn counter', function() {
-
+  it('should update the current card', function() {
+    expect(round.currentCard).to.equal(card1)
+    round.takeTurn()
+    expect(round.currentCard).to.equal(card2)
   })
 
-  it.skip('should update the current card', function() {
+  it('should evaluate the guess', function() {
+    const guess1 = round.takeTurn('correct')
+    expect(guess1).to.equal(`That's correct!`)
 
+    const guess2 = round.takeTurn('something')
+    expect(guess2).to.equal(`That's incorrect, try again!`)
   })
 
-  it.skip('should store the incorrect guesses', function() {
+  it('should store the incorrect guesses', function() {
+    const guess1 = round.takeTurn('correct')
+    expect(round.incorrectGuesses.length).to.equal(0)
 
-  })
-
-  it.skip('should provide feedback based on answer', function() {
-
+    const guess2 = round.takeTurn('something')
+    expect(round.incorrectGuesses[0]).to.equal(4)
   })
 
   it.skip('should calculate the percent of correct answers', function() {
