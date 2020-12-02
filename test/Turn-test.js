@@ -51,8 +51,8 @@ describe('Turn', function() {
     const turn1 = new Turn('b', card)
     const turn2 = new Turn('a', card)
 
-    const guess1 = turn1.evaluateGuess(turn1, card)
-    const guess2 = turn2.evaluateGuess(turn2, card)
+    const guess1 = turn1.evaluateGuess(card)
+    const guess2 = turn2.evaluateGuess(card)
 
     expect(guess1).to.equal(true)
     expect(guess2).to.equal(false)
