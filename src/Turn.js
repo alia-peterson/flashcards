@@ -1,26 +1,26 @@
 class Turn {
-  constructor( guess, card ) {
-    this.guess = guess
+  constructor( playerGuess, card ) {
+    this.playerGuess = playerGuess
     this.card = card
   }
 
   returnGuess() {
-    return this.guess
+    return this.playerGuess
   }
 
   returnCard() {
     return this.card
   }
 
-  evaluateGuess(turn, card) {
-    if (turn.guess === card.correctAnswer) {
+  evaluateGuess() {
+    if (this.playerGuess === this.card.correctAnswer) {
       return true
     }
     return false
   }
 
   giveFeedback() {
-    if (this.evaluateGuess) {
+    if (this.evaluateGuess()) {
       return `That's correct!`
     }
     return `That's incorrect, try again!`

@@ -1,7 +1,7 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const Card = require('../src/Card');
+const Card = require('../src/Card')
 const Turn = require('../src/Turn')
 
 describe('Turn', function() {
@@ -13,13 +13,13 @@ describe('Turn', function() {
 
   it('should be an instance of Turn', function() {
     const turn = new Turn()
-    expect(turn).to.be.an.instanceof(Turn);
+    expect(turn).to.be.an.instanceof(Turn)
   })
 
   it('should store a guess', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
     const turn = new Turn('b', card)
-    expect(turn.guess).to.deep.equal('b')
+    expect(turn.playerGuess).to.deep.equal('b')
   })
 
   it('should store a card', function() {
@@ -48,11 +48,14 @@ describe('Turn', function() {
 
   it('should evaluate player guess', function() {
     const card = new Card(1, 'What?', ['a', 'b', 'c'], 'b')
-    const turn = new Turn('b', card)
+    const turn1 = new Turn('b', card)
+    const turn2 = new Turn('a', card)
 
-    const guess = turn.evaluateGuess(turn, card)
+    const guess1 = turn1.evaluateGuess(card)
+    const guess2 = turn2.evaluateGuess(card)
 
-    expect(guess).to.equal(true)
+    expect(guess1).to.equal(true)
+    expect(guess2).to.equal(false)
   })
 
   it('should provide feedback to player', function() {
