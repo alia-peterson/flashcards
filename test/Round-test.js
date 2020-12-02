@@ -61,8 +61,14 @@ describe('Round', function() {
     expect(round.incorrectGuesses[0]).to.equal(4)
   })
 
-  it.skip('should calculate the percent of correct answers', function() {
-    // should also print game over message
+  it('should calculate the percent of correct answers', function() {
+    expect(round.calculatePercentCorrect()).to.equal(0)
+
+    const guess1 = round.takeTurn('correct')
+    expect(round.calculatePercentCorrect()).to.equal(100)
+
+    const guess2 = round.takeTurn('something')
+    expect(round.calculatePercentCorrect()).to.equal(50)
   })
 
 })
