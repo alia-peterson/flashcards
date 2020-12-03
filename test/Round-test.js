@@ -45,9 +45,9 @@ describe('Round', function() {
   })
 
   it('should evaluate the guess', function() {
-    expect(round.takeTurn('correct')).to.equal(`That's correct!`)
+    expect(round.takeTurn('correct')).to.equal(`correct!`)
 
-    expect(round.takeTurn('something')).to.equal(`That's incorrect, try again!`)
+    expect(round.takeTurn('something')).to.equal(`incorrect!`)
   })
 
   it('should store the incorrect guesses', function() {
@@ -66,10 +66,6 @@ describe('Round', function() {
 
     round.takeTurn('something')
     expect(round.calculatePercentCorrect()).to.equal(50)
-  })
-
-  it('should log end round phrase', function() {
-    round.endRound()
   })
 
 })
