@@ -6,7 +6,10 @@ const Round = require('./Round')
 const Deck = require('./Deck')
 
 class Game {
-  constructor() {}
+  constructor() {
+    this.deck = null
+    this.startTime = Date.now()
+  }
 
   printMessage( deck ) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
@@ -14,18 +17,31 @@ class Game {
   }
 
   printQuestion( round ) {
-    util.main( round )
+    util.main( round, this )
   }
 
-  start() {
-    const deck = new Deck()
-    prototypeQuestions.forEach(( cardData ) => {
-      let card = new Card(cardData.id, cardData.question, cardData.answers, cardData.correctAnswer)
-      deck.cards.push( card )
-    })
-    const round = new Round( deck )
-    this.printMessage( deck )
+  start( cardDataSet ) {
+    this.deck = new Deck()
+    this.prepareDeck( cardDataSet )
+
+    const round = new Round( this.deck )
+    this.printMessage( this.deck )
     this.printQuestion( round )
+  }
+
+  prepareDeck( cardIDs ) {
+    let cardList = prototypeQuestions
+
+    if ( cardIDs ) {
+      cardList = prototypeQuestions.filter( cardData => {
+        return cardIDs.includes( cardData.id )
+      })
+    }
+
+    cardList.forEach( cardData => {
+      let card = new Card(cardData.id, cardData.question, cardData.answers, cardData.correctAnswer)
+      this.deck.cards.push( card )
+    })
   }
 }
 

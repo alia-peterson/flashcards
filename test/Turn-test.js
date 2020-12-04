@@ -54,8 +54,8 @@ describe('Turn', function() {
     const feedback1 = turn1.giveFeedback()
     const feedback2 = turn2.giveFeedback()
 
-    expect(feedback1).to.equal(`That's correct!`)
-    expect(feedback2).to.equal(`That's incorrect, try again!`)
+    expect(feedback1).to.equal(`correct!`)
+    expect(feedback2).to.equal(`incorrect!`)
   })
 
 })
