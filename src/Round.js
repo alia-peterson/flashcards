@@ -32,7 +32,7 @@ class Round {
       return 0
     } else {
       const totalCorrect = this.turns - this.incorrectGuesses.length
-      return totalCorrect / this.turns * 100
+      return (totalCorrect / this.turns * 100).toFixed(0)
     }
   }
 

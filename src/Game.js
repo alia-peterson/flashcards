@@ -8,6 +8,7 @@ const Deck = require('./Deck')
 class Game {
   constructor() {
     this.deck = null
+    this.startTime = Date.now()
   }
 
   printMessage( deck ) {
@@ -30,6 +31,7 @@ class Game {
 
   prepareDeck( cardIDs ) {
     let cardList = prototypeQuestions
+
     if ( cardIDs ) {
       cardList = prototypeQuestions.filter( cardData => {
         return cardIDs.includes( cardData.id )
