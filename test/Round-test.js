@@ -62,10 +62,10 @@ describe('Round', function() {
     expect(round.calculatePercentCorrect()).to.equal(0)
 
     round.takeTurn('correct')
-    expect(round.calculatePercentCorrect()).to.equal(100)
+    expect(round.calculatePercentCorrect()).to.equal('100')
 
     round.takeTurn('something')
-    expect(round.calculatePercentCorrect()).to.equal(50)
+    expect(round.calculatePercentCorrect()).to.equal('50')
   })
 
 })
